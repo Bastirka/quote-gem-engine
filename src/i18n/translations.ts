@@ -28,6 +28,10 @@ interface CalcT {
   goal: string; sections: string; features: string; ecommerce: string;
   design: string; content: string; languages: string; deadline: string; support: string;
   summary: string; notSpecified: string;
+  package: string; base: string;
+  summaryType: string; summaryPackage: string; summaryFeatures: string; summaryFinal: string;
+  featuresSelected: string;
+  categories: Record<string, string>;
   goals: { id: string; label: string }[];
   sectionList: { id: string; label: string }[];
 }
@@ -127,6 +131,24 @@ export const t: Record<Lang, Translations> = {
       support: "Atbalsts",
       summary: "Gala pārskats",
       notSpecified: "Nav norādīts",
+      package: "Pakete",
+      base: "bāze",
+      summaryType: "Tips",
+      summaryPackage: "Pakete",
+      summaryFeatures: "Funkcijas",
+      summaryFinal: "Gala cena",
+      featuresSelected: "izvēlētas",
+      categories: {
+        essential: "Pamata",
+        marketing: "Mārketings",
+        business: "Bizness",
+        restaurant: "Restorāns",
+        salon: "Salons",
+        autoservice: "Auto serviss",
+        ecommerce: "E-veikals",
+        booking: "Booking",
+        advanced: "Papildu",
+      },
       goals: [
         { id: "presence", label: "Klātbūtne internetā" },
         { id: "leads", label: "Piesaistīt klientus" },
@@ -275,6 +297,24 @@ export const t: Record<Lang, Translations> = {
       support: "Support",
       summary: "Summary",
       notSpecified: "Not specified",
+      package: "Package",
+      base: "base",
+      summaryType: "Type",
+      summaryPackage: "Package",
+      summaryFeatures: "Features",
+      summaryFinal: "Final price",
+      featuresSelected: "selected",
+      categories: {
+        essential: "Essential",
+        marketing: "Marketing",
+        business: "Business",
+        restaurant: "Restaurant",
+        salon: "Salon",
+        autoservice: "Auto service",
+        ecommerce: "E-commerce",
+        booking: "Booking",
+        advanced: "Advanced",
+      },
       goals: [
         { id: "presence", label: "Online presence" },
         { id: "leads", label: "Get more leads" },

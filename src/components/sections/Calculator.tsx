@@ -84,7 +84,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
                       selected={state.websiteTypeId === w.id}
                       onClick={() => update({ websiteTypeId: w.id })}
                       title={lang === "lv" ? w.label_lv : w.label_en}
-                      description={`${formatCurrency(w.basePrice)} bāze`}
+                      description={`${formatCurrency(w.basePrice)} ${tr.calc.base}`}
                     />
                   ))}
                 </div>
@@ -120,7 +120,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
                   ))}
                 </div>
                 <div className="mt-6">
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Pakete</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">{tr.calc.package}</div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {packages.map((p) => (
                       <OptionCard
@@ -144,7 +144,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
                   if (!fts.length) return null;
                   return (
                     <div key={cat} className="mb-5">
-                      <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{cat}</div>
+                      <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{tr.calc.categories[cat] ?? cat}</div>
                       <div className="flex flex-wrap gap-2">
                         {fts.map((ft) => (
                           <FeatureChip
@@ -169,7 +169,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
                   const fts = features.filter((f) => f.category === cat);
                   return (
                     <div key={cat} className="mb-5">
-                      <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{cat}</div>
+                      <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{tr.calc.categories[cat] ?? cat}</div>
                       <div className="flex flex-wrap gap-2">
                         {fts.map((ft) => (
                           <FeatureChip
@@ -266,10 +266,10 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
             {step === 7 && (
               <CalculatorStep stepKey="summary" title={tr.calc.summary}>
                 <div className="space-y-2 text-sm">
-                  <Row label="Tips" value={websiteType ? (lang === "lv" ? websiteType.label_lv : websiteType.label_en) : tr.calc.notSpecified} />
-                  <Row label="Pakete" value={getPackage(state.packageId)?.name ?? tr.calc.notSpecified} />
-                  <Row label="Funkcijas" value={state.selectedFeatureIds.length ? `${state.selectedFeatureIds.length} izvēlētas` : tr.calc.notSpecified} />
-                  <Row label="Gala cena" value={formatCurrency(breakdown.finalPrice)} highlight />
+                  <Row label={tr.calc.summaryType} value={websiteType ? (lang === "lv" ? websiteType.label_lv : websiteType.label_en) : tr.calc.notSpecified} />
+                  <Row label={tr.calc.summaryPackage} value={getPackage(state.packageId)?.name ?? tr.calc.notSpecified} />
+                  <Row label={tr.calc.summaryFeatures} value={state.selectedFeatureIds.length ? `${state.selectedFeatureIds.length} ${tr.calc.featuresSelected}` : tr.calc.notSpecified} />
+                  <Row label={tr.calc.summaryFinal} value={formatCurrency(breakdown.finalPrice)} highlight />
                 </div>
                 <Button
                   onClick={onRequestQuote}
