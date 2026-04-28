@@ -84,7 +84,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
                       selected={state.websiteTypeId === w.id}
                       onClick={() => update({ websiteTypeId: w.id })}
                       title={lang === "lv" ? w.label_lv : w.label_en}
-                      description={`${formatCurrency(w.basePrice)} bāze`}
+                      description={`${formatCurrency(w.basePrice)} ${tr.calc.base}`}
                     />
                   ))}
                 </div>
