@@ -56,9 +56,9 @@ export const QuoteRequestForm = ({ state, tr, lang }: QuoteRequestFormProps) => 
     setStatus("sending");
 
     const goalLabel = tr.calc.goals.find((g) => g.id === state.goalId)?.label ?? null;
-    const sectionLabels = (state.sectionIds ?? [])
+    const sectionLabels: string[] = (state.sectionIds ?? [])
       .map((id) => tr.calc.sectionList.find((s) => s.id === id)?.label)
-      .filter((x): x is string => !!x);
+      .filter((x): x is NonNullable<typeof x> => !!x);
 
     const payload = buildQuotePayload(
       { name: name.trim(), phone: phone.trim(), email: email.trim(), message: message.trim() },

@@ -72,7 +72,7 @@ export const Calculator = ({ tr, lang, state, setState, onRequestQuote }: Calcul
             </span>
             <span>{tr.calc.steps[step]}</span>
           </div>
-          <StepProgress steps={tr.calc.steps} current={step} onJump={setStep} />
+          <StepProgress steps={[...tr.calc.steps]} current={step} onJump={setStep} />
 
           <div className="min-h-[320px]">
             {step === 0 && (
