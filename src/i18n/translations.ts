@@ -10,7 +10,50 @@ export const detectLang = (): Lang => {
   return "lv";
 };
 
-export const t = {
+interface NavT {
+  home: string; calculator: string; recommended: string; request: string; faq: string; reset: string;
+}
+interface HeroT {
+  title: string; subtitle: string; badges: string[]; ctaStart: string; ctaQuote: string;
+}
+interface HowStepT { title: string; desc: string; }
+interface HowT { title: string; subtitle: string; steps: HowStepT[]; }
+interface RecommendedT {
+  title: string; subtitle: string; popular: string; choose: string; chosen: string; cancel: string;
+  requestOffer: string; bestFor: string; includes: string; market: string;
+}
+interface CalcT {
+  title: string; subtitle: string; next: string; back: string; requestOffer: string;
+  step: string; of: string; steps: string[];
+  goal: string; sections: string; features: string; ecommerce: string;
+  design: string; content: string; languages: string; deadline: string; support: string;
+  summary: string; notSpecified: string;
+  goals: { id: string; label: string }[];
+  sectionList: { id: string; label: string }[];
+}
+interface ResultT {
+  title: string; basePrice: string; package: string; multiplier: string;
+  included: string; paidExtras: string; design: string; content: string; languages: string;
+  deadline: string; support: string; finalPrice: string; marketPrice: string; savings: string;
+  cta: string; empty: string;
+}
+interface QuoteT {
+  title: string; subtitle: string; name: string; phone: string; email: string; message: string;
+  submit: string; sending: string; success: string; errorContact: string; errorGeneric: string;
+  summaryTitle: string; offerType: string; websiteType: string; packageL: string;
+  finalPrice: string; market: string;
+}
+interface FaqItemT { q: string; a: string; }
+interface FaqT { title: string; items: FaqItemT[]; }
+interface FooterT {
+  disclaimer: string; privacy: string; ctaCalc: string; ctaQuote: string; rights: string;
+}
+export interface Translations {
+  nav: NavT; hero: HeroT; how: HowT; recommended: RecommendedT; calc: CalcT;
+  result: ResultT; quote: QuoteT; faq: FaqT; footer: FooterT;
+}
+
+export const t: Record<Lang, Translations> = {
   lv: {
     nav: {
       home: "Sākums",
@@ -307,6 +350,5 @@ export const t = {
       rights: "All rights reserved.",
     },
   },
-} as const;
+};
 
-export type Translations = typeof t.lv;
