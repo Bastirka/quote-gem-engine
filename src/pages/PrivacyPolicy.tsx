@@ -229,14 +229,9 @@ const sections = [
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gradient-surface">
-      {/* Decorative gradient blobs */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 overflow-hidden">
-        <div className="mx-auto h-72 max-w-5xl blur-3xl opacity-40 bg-gradient-brand rounded-full" />
-      </div>
-
-      <header className="relative z-10 border-b border-border/60">
-        <div className="container max-w-4xl flex items-center justify-between py-5">
+    <div className="min-h-screen bg-gradient-to-b from-[#111827] via-[#0b1020] to-[#070b16] text-white">
+      <header className="relative z-10 border-b border-white/10 bg-background/40 backdrop-blur-md">
+        <div className="container max-w-5xl flex items-center justify-between py-5">
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={logo}
@@ -258,7 +253,7 @@ const PrivacyPolicy = () => {
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-4xl py-12 sm:py-16">
+      <main className="relative z-10 container max-w-5xl py-12 sm:py-16">
         <div className="mb-10">
           <span className="inline-flex items-center rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
             Last updated: 28.04.2026
