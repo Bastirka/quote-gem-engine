@@ -28,6 +28,10 @@ interface CalcT {
   goal: string; sections: string; features: string; ecommerce: string;
   design: string; content: string; languages: string; deadline: string; support: string;
   summary: string; notSpecified: string;
+  package: string; base: string;
+  summaryType: string; summaryPackage: string; summaryFeatures: string; summaryFinal: string;
+  featuresSelected: string;
+  categories: Record<string, string>;
   goals: { id: string; label: string }[];
   sectionList: { id: string; label: string }[];
 }
