@@ -9,6 +9,12 @@ const GOOGLE_ADS_CONVERSION_LABEL = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_L
 
 const OrderComplete = () => {
   useEffect(() => {
+    if (window.location.pathname === "/thank-you") {
+      const params = window.location.search;
+      window.location.replace(`https://neflixy.com/thank-you${params}`);
+      return;
+    }
+
     document.title = "Request Received | PriceLab by Neflixy";
 
     const metaSelectors = [
@@ -44,7 +50,10 @@ const OrderComplete = () => {
     }
     descriptionTag.setAttribute("content", description);
 
-    const shouldTrack = typeof window !== "undefined" && sessionStorage.getItem("pricelab_request_submitted") === "true";
+    const params = new URLSearchParams(window.location.search);
+    const shouldTrack =
+      typeof window !== "undefined" &&
+      (sessionStorage.getItem("pricelab_request_submitted") === "true" || params.get("submitted") === "true");
     if (shouldTrack && GOOGLE_ADS_ID && GOOGLE_ADS_CONVERSION_LABEL && typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("event", "conversion", {
         send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`,
