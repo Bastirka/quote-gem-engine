@@ -12,6 +12,7 @@ import { calculateBreakdown, type CalculatorState } from "@/utils/calculatePrice
 import { formatCurrency, formatRange } from "@/utils/formatCurrency";
 import type { Translations, Lang } from "@/i18n/translations";
 import { getPackage } from "@/data/packages";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -29,6 +30,7 @@ interface QuoteRequestFormProps {
 type Status = "idle" | "sending" | "success" | "error";
 
 export const QuoteRequestForm = ({ state, tr, lang }: QuoteRequestFormProps) => {
+  const navigate = useNavigate();
   const breakdown = calculateBreakdown(state);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -89,6 +91,12 @@ export const QuoteRequestForm = ({ state, tr, lang }: QuoteRequestFormProps) => 
       setPhone("");
       setEmail("");
       setMessage("");
+      try {
+        sessionStorage.setItem("pricelab_request_submitted", "true");
+      } catch {
+        // ignore
+      }
+      navigate("/order-complete");
     } catch (err) {
       console.error(err);
       setStatus("error");

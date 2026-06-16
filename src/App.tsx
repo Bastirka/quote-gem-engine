@@ -6,7 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import OrderComplete from "./pages/OrderComplete.tsx";
 import CookieConsent from "./components/CookieConsent.tsx";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/order-complete" element={<OrderComplete />} />
+          <Route path="/thank-you" element={<Navigate to="/order-complete" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
